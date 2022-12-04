@@ -8,6 +8,8 @@ class Admin::GenresController < ApplicationController
   def create
     @genre = Genre.new(genre_params)
     @genres =Genre.all
+    @genre.save
+    redirect_to genres_path(@genre.id)
   end
 
   def edit
@@ -20,4 +22,9 @@ class Admin::GenresController < ApplicationController
     redirect_to genre_path(@genre.id)
   end
 
+
+  private
+  def genre_params
+    params.require(:params).permit(:name)
+  end
 end
