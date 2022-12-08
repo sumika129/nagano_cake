@@ -6,7 +6,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -14,6 +14,21 @@
     <header class="shadow-sm">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
+          <% if admin_signed_in? %>
+            <li>
+              <%= link_to "注文履歴一覧", admin_root_path %>
+            </li>
+            <li>
+              <%= link_to "新規商品登録", new_admin_item_path %>
+            </li>
+            <li>
+              <%= link_to "商品一覧", admin_items_path %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to "ログイン", admin_session_path %>
+            </li>
+          <% end %>
 
         </div>
       </nav>

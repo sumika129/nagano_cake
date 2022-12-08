@@ -8,8 +8,11 @@ class Admin::GenresController < ApplicationController
   def create
     @genre = Genre.new(genre_params)
     @genres =Genre.all
-    @genre.save
-    redirect_to genres_path(@genre.id)
+    if @genre.save
+      redirect_to genres_path(@genre.id)
+    else
+      render:index
+    end
   end
 
   def edit
