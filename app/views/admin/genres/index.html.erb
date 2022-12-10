@@ -8,23 +8,23 @@
 </div>
 
 <div class="col-md-8 offset-md-1">
-  <h2>ジャンル</h2>
+  <h2>ジャンル一覧</h2>
     <table>
       <thead>
         <tr>
-          <th></th>
           <th>ジャンル名</th>
           <th>登録日時</th>
           <th>更新日時</th>
+          <th></th>
         </tr>
       </thead>
       <% @genres.each do |genre| %>
       <tbody>
         <tr>
-          <td><%= name %></td>
-          <td><%= @genre.created_at.strftime('%Y/%m/%d %H:%M') %></td>
-          <td><%= @genre.updated_at.strftime('%Y/%m/%d %H:%M') %></td>
-          <td><%= link_to "Edit", edit_admin_path(@genre), class:"btn btn-sm btn-success" %></td>
+          <td><%= genre.name %></td>
+          <td><%= genre.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+          <td><%= genre.updated_at.strftime('%Y/%m/%d %H:%M') %></td>
+          <td><%= link_to "Edit", edit_admin_genre_path(genre), class:"btn btn-sm btn-success" %></td>
         </tr>
       </tbody>
       <% end %>
