@@ -27,9 +27,19 @@
             <li>
               <%= link_to "ジャンル管理", admin_genres_path %>
             </li>
+            <li>
+              <%= link_to "会員一覧", admin_customers_path %>
+            </li>
+            <li>
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+            </li>
           <% else %>
             <li>
-              <%= link_to "ログイン", admin_session_path %>
+              <%= link_to "会員ログイン", customer_session_path %>
+            </li>
+
+            <li>
+              <%= link_to "管理者ログイン", admin_session_path %>
             </li>
           <% end %>
 
