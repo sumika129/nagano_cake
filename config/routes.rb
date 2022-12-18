@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   end
 
   namespace :public do
-
-    get 'home/about'=>'homes#about',as:'about'
+   get 'home/about'=>'homes#about',as:'about'
+   resources :customers, only: [:show, :edit]
   end
 
   devise_for :customers,skip: [:passwords], controllers: {
