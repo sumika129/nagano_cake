@@ -4,14 +4,14 @@
 
       <tr>
         <%= @customer.id %><br>
-        <a>姓</a><%= @customer.last_name %>
-        <a>名</a><%= @customer.first_name %><br>
-        <a>姓（カナ）</a><%= @customer.last_name_kana %>
-        <a>名（カナ）</a><%= @customer.first_name_kana %><br>
-        <a>メールアドレス</a><%= @customer.email %><br>
-        <a>郵便番号</a><%= @customer.postal_code %><br>
-        <a>住所</a><%= @customer.address %><br>
-        <a>電話番号</a><%= @customer.telephone_number %><br>
+        <a>姓：</a><%= @customer.last_name %>
+        <a>名：</a><%= @customer.first_name %><br>
+        <a>姓(カナ)：</a><%= @customer.last_name_kana %>
+        <a>名(カナ)：</a><%= @customer.first_name_kana %><br>
+        <a>メールアドレス：</a><%= @customer.email %><br>
+        <a>郵便番号：</a><%= @customer.postal_code %><br>
+        <a>住所：</a><%= @customer.address %><br>
+        <a>電話番号：</a><%= @customer.telephone_number %><br>
         <% if @customer == current_customer %>
           <td><%= link_to "編集", edit_public_customer_path(@customer), class:"btn btn-sm btn-success" %></td>
         <% end %>

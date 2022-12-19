@@ -47,11 +47,16 @@
             <li>
               <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
             </li>
+            <li>
+              <%= link_to "退会", public_unsubscribe_path %>
+            </li>
           <% else %>
+            <li>
+              <%= link_to "新規登録", new_customer_registration_path %>
+            </li>
             <li>
               <%= link_to "会員ログイン", customer_session_path %>
             </li>
-
             <li>
               <%= link_to "管理者ログイン", admin_session_path %>
             </li>
