@@ -1,9 +1,28 @@
-<%= form_with model: [:admin,@item] do |f| %>
-  <h4>商品名</h4>
-    <%= f.text_field :name %>
-  <h4>商品説明</h4>
-    <%= f.text_area :introduction %>
-  <h4>価格（税抜）</h4>
-    <%= f.text_field :price %>
-  <%= f.submit 'Create Item', class:"btn btn-success" %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+
+    <h1>商品新規登録</h1>
+
+    <%= form_with model: [:admin,@item] do |f| %>
+      <h4>商品画像</h4>
+        <%= f.file_field :image %>
+      <h4>商品名</h4>
+        <%= f.text_field :name %>
+      <h4>商品説明</h4>
+        <%= f.text_area :introduction %>
+      <h4>ジャンル</h4>
+        <%= f.collection_select :genre_id,Genre.all, :id, :name , {prompt: "選択してください"}%>
+      <h4>税抜価格</h4>
+        <%= f.text_field :price %>
+      <h4>販売ステータス</h4>
+        <%= form_with model: [:admin,@item], local: true do |f| %>
+      　<%= f.radio_button :is_active, :true %>　<%= f.label :is_active, "販売中" %>
+      　<%= f.radio_button :is_active, :false %>　<%= f.label :is_active, "販売停止中" %><br />
+        <% end %>
+      <%= f.submit '新規登録', class:"btn btn-success" %>
+    <% end %>
+
+    </div>
+  </div>
+</div>

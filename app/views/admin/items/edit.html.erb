@@ -5,14 +5,23 @@
     <h2>商品編集</h2>
       <%= form_with model: [:admin,@item] do |f| %>
         <h4>商品名</h4>
+        <%= f.file_field :image %>
+        <h4>商品名</h4>
         <%= f.text_field :name %>
         <h4>商品説明</h4>
         <%= f.text_area :introduction %>
-        <h4>価格（税抜）</h4>
+        <h4>ジャンル</h4>
+          
+        <h4>税抜価格</h4>
         <%= f.text_field :price %>
+        <h4>販売ステータス</h4>
+          <%= form_with model: [:admin,@item], local: true do |f| %>
+       　  <%= f.radio_button :is_active, :true %>　<%= f.label :is_active, "販売中" %>
+        　<%= f.radio_button :is_active, :false %>　<%= f.label :is_active, "販売停止中" %><br />
+          <% end %>
 
         <%= f.submit 'Update item', class:"btn btn-success" %><br/>
-        <%= link_to "Back", admin_item_path %>
+        <%= link_to "戻る", admin_item_path %>
 
       <% end %>
 
