@@ -3,6 +3,7 @@
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
 
     <h2>商品一覧</h2>
+    <p><%= link_to "新規登録", new_admin_item_path %></p>
       <table>
         <thead>
           <tr>
@@ -20,7 +21,11 @@
             <td><%= link_to item.name, admin_item_path(item) %></td>
             <td><%= item.price %></td>
             <td><%= item.genre_id %></td>
-            <td><%= item.is_active %></td>
+            <% if item.is_active %>
+            <td>販売中</td>
+            <% else %>
+            <td>販売停止中</td>
+            <% end %>
           </tr>
         </tbody>
         <% end %>

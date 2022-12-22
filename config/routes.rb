@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   namespace :public do
     get 'addresses/index'
     get 'addresses/edit'
@@ -19,6 +20,7 @@ Rails.application.routes.draw do
     get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
     patch '/customers/:id/withdraw' => 'customers#withdraw', as: 'withdraw'
     resources :addresses, only: [:index, :create, :destroy, :edit, :update]
+    resources :items, only: [:show, :index]
   end
 
   devise_for :customers,skip: [:passwords], controllers: {
