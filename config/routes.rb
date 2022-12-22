@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-
-  namespace :public do
-    get 'cart_items/index'
-  end
   namespace :public do
     get 'addresses/index'
     get 'addresses/edit'
@@ -24,6 +20,7 @@ Rails.application.routes.draw do
     patch '/customers/:id/withdraw' => 'customers#withdraw', as: 'withdraw'
     resources :addresses, only: [:index, :create, :destroy, :edit, :update]
     resources :items, only: [:show, :index]
+    resources :cart_items, only: [:index, :create]
   end
 
   devise_for :customers,skip: [:passwords], controllers: {
