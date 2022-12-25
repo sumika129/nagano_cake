@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'addresses/index'
-    get 'addresses/edit'
-  end
+
   root to: "public/homes#top"
 
   namespace :admin do
@@ -20,7 +17,15 @@ Rails.application.routes.draw do
     patch '/customers/:id/withdraw' => 'customers#withdraw', as: 'withdraw'
     resources :addresses, only: [:index, :create, :destroy, :edit, :update]
     resources :items, only: [:show, :index]
-    resources :cart_items, only: [:index, :create]
+    resources :cart_items do
+      collection do
+        delete 'destroy_all'
+      end
+    end
+    resources :cart_items, only: [:index, :create, :destroy]
+    resources :orders, only: [:new, :index, :show]
+    post 'orders/confirm'
+    post 'orders/complete'
   end
 
   devise_for :customers,skip: [:passwords], controllers: {
