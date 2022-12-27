@@ -26,11 +26,10 @@ class Public::OrdersController < ApplicationController
   end
 
   def complete
-
   end
 
   def create
-
+    
   end
 
   def index

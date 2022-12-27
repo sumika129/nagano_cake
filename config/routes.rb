@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   root to: "public/homes#top"
 
   namespace :admin do
@@ -8,6 +7,8 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :create, :edit, :update]
     resources :items, only: [:new, :create, :index, :show, :edit, :update]
     resources :customers, only: [:index, :show, :edit]
+    resources :order_details, only: [:update]
+    resources :orders, only: [:show]
   end
 
   namespace :public do
