@@ -29,7 +29,9 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-    
+    @order = Order.new(order_params)
+    @order.save
+    redirect_to public_orders_complete
   end
 
   def index
