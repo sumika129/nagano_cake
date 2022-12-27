@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+
+     <h1>注文情報確認</h1>
+
+     <table border="1" style="border-collapse: collapse">
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+          </tr>
+        </thead>
+        <% @cart_items.each do |cart_item| %>
+        <tbody>
+          <tr>
+            <td><%= cart_item.item.name %></td>
+            <td><%= cart_item.item.with_tax_price%></td>
+            <td><%= cart_item.amount %></td>
+            <td><%= cart_item.subtotal%></td>
+            <% @total += cart_item.subtotal %>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+      <br>
+      <table border="1" style="border-collapse: collapse">
+        <tfoot>
+          <tr>
+            <th>送料</th>
+            <td><%= @postage %></td>
+          </tr>
+          <tr>
+            <th>商品合計</th>
+            <td><%= @total %></td>
+          </tr>
+          <tr>
+            <th>請求合計</th>
+            <td><%= @total += @postage %></td>
+          </tr>
+        </tfoot>
+      </table>
+      <br>
+      <h4>支払方法</h4>
+        <%= @order.payment_method_i18n %>
+      <h4>お届け先</h4>
+        <%= @order.postal_code %>
+        <%= @order.address %>
+        <%= @order.name %>
+
+        <%#= f.submit "注文を確定する", class:"btn btn-sm btn-success" %>
+    </div>
+  </div>
+</div>

@@ -23,7 +23,7 @@ Rails.application.routes.draw do
       end
     end
     resources :cart_items, only: [:index, :create, :destroy]
-    resources :orders, only: [:new, :index, :show]
+    resources :orders, only: [:new, :create, :index, :show]
     post 'orders/confirm'
     post 'orders/complete'
   end
