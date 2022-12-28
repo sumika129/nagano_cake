@@ -2,6 +2,7 @@ class Order < ApplicationRecord
 
   belongs_to :customer
   has_many :oeder_details
+  has_many :homes
 
   accepts_nested_attributes_for :oeder_details
 
