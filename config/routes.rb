@@ -24,9 +24,10 @@ Rails.application.routes.draw do
       end
     end
     resources :cart_items, only: [:index, :create, :destroy]
+    get 'orders/complete'
     resources :orders, only: [:new, :create, :index, :show]
     post 'orders/confirm'
-    post 'orders/complete'
+
   end
 
   devise_for :customers,skip: [:passwords], controllers: {

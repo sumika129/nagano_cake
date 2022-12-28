@@ -34,5 +34,7 @@
     </table>
   </body>
 
-<br
-<a>配送先</a><%= link_to "一覧を見る", public_addresses_path(current_customer) %>
+<br>
+<a>配送先</a><%= link_to "一覧を見る", public_addresses_path(current_customer), class:"btn btn-sm btn-primary" %><br>
+<br>
+<a>注文履歴</a><%= link_to "一覧を見る", public_orders_path(current_customer), class:"btn btn-sm btn-primary" %>
