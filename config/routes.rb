@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :items, only: [:new, :create, :index, :show, :edit, :update]
     resources :customers, only: [:index, :show, :edit]
     resources :order_details, only: [:update]
-    resources :orders, only: [:show]
+    resources :orders, only: [:show, :update]
   end
 
   namespace :public do
