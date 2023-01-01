@@ -1,13 +1,15 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+    <div class="col-sm-5 col-md-3 col-lg-2 px-5 px-sm-0 mx-auto">
 
     <h2>商品詳細</h2>
       <%= image_tag @item.get_image(100,100) %>
+    </div>
+    <div class="col-sm-7 col-md-5 col-lg-3 px-5 px-sm-0 mx-auto">
       <table>
           <tr>
             <th>商品名</th>
-            <td><%= link_to @item.name, edit_admin_item_path(@item) %></td>
+            <td><%= @item.name %></td>
           </tr>
           <tr>
             <th>商品説明</th>
@@ -19,7 +21,7 @@
           </tr>
           <tr>
             <th>税込価格(税抜価格)</th>
-            <td><%= @item.price %>円</td>
+            <td><%= @item.with_tax_price %>(<%= @item.price %>)円</td>
           </tr>
           <tr>
             <th>販売ステータス</th>

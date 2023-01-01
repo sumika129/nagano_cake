@@ -3,7 +3,9 @@
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
 
     <h2>商品一覧</h2>
-    <p><%= link_to "新規登録", new_admin_item_path %></p>
+    <p class="text-right"><%= link_to  new_admin_item_path do %>
+      <i class="fas fa-plus fa-2x" style="color: #000;"></i>
+    <% end %></p>
       <table>
         <thead>
           <tr>
@@ -20,7 +22,7 @@
             <td><%= item.id %></td>
             <td><%= link_to item.name, admin_item_path(item) %></td>
             <td><%= item.price %></td>
-            <td><%= item.genre_id %></td>
+            <td><%= item.genre.name %></td>
             <% if item.is_active %>
             <td>販売中</td>
             <% else %>
@@ -30,6 +32,7 @@
         </tbody>
         <% end %>
       </table>
+      <%= paginate @item %>
     </div>
   </div>
 </div>
