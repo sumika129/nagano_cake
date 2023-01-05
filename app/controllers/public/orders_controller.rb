@@ -1,6 +1,7 @@
 class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
+    @address = Address.find(params[:address_id])
   end
 
   def confirm

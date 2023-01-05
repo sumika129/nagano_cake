@@ -1,28 +1,32 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-md-3">
-      <% @genre.each do |genre| %>
       <table border="1" style="border-collapse: collapse">
-         <tr>
-          <th>ジャンル検索</th>
-         </tr>
-         <tr>
-           <td><%= genre.name %></td>
-         </tr>
+        <thead>
+          <tr>
+            <th>ジャンル検索</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @genre.each do |genre| %>
+          <tr>
+            <td><%= genre.name %></td>
+          </tr>
+        <% end %>
+        </tbody>
       </table>
-      <% end %>
     </div>
     <div class="col-md-8 offset-md-1">
       <h2>商品一覧</h2>
       <table>
         <% @item.each do |item| %>
         <tr>
-          <td><%= image_tag item.get_image(100,100) %></td>
+          <td><%= image_tag item.get_image(70,70) %></td>
           <td><%= link_to item.name, public_item_path(item) %></td>
           <td><%= item.price %>円</td>
         </tr>
         <% end %>
-        <%= paginate @item %>
+        <td><%= paginate @item %></td>
       </table>
     </div>
   </div>

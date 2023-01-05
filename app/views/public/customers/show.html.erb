@@ -1,40 +1,46 @@
-<h1>マイページ</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+    <h1>マイページ</h1>
 
-<h2>登録情報</h2>
-<% if @customer == current_customer %>
-  <%= link_to "編集する", edit_public_customer_path(@customer), class:"btn btn-sm btn-success" %></td>
-<% end %><br>
+    <h4>登録情報</h4>
+    <% if @customer == current_customer %>
+      <%= link_to "編集する", edit_public_customer_path(@customer), class:"btn btn-sm btn-success" %></td>
+    <% end %><br>
+      <table border="1" style="border-collapse: collapse">
+        <body>
+          <tr>
+            <th class="nowrap">氏名</th>
+            <td><%= @customer.last_name %> <%= @customer.first_name %></td>
+          <tr/>
+          <tr>
+            <th class="nowrap">カナ</th>
+            <td><%= @customer.last_name_kana %> <%= @customer.first_name_kana %></td>
+          <tr/>
+          <tr>
+            <th class="nowrap">郵便番号</th>
+            <td><%= @customer.postal_code %></td>
+          <tr/>
+          <tr>
+            <th class="nowrap">住所</th>
+            <td><%= @customer.address %></td>
+          <tr/>
+          <tr>
+            <th class="nowrap">電話番号</th>
+            <td><%= @customer.telephone_number %></td>
+          <tr/>
+          <tr>
+            <th class="nowrap">メールアドレス</th>
+            <td><%= @customer.email %></td>
+          </tr>
+        </body>
+      </table>
 
-  <body>
-    <table border="1" style="border-collapse: collapse">
-      <tr>
-        <th class="nowrap">氏名</th>
-        <td><%= @customer.last_name %> <%= @customer.first_name %></td>
-      <tr/>
-      <tr>
-        <th class="nowrap">カナ</th>
-        <td><%= @customer.last_name_kana %> <%= @customer.first_name_kana %></td>
-      <tr/>
-      <tr>
-        <th class="nowrap">郵便番号</th>
-        <td><%= @customer.postal_code %></td>
-      <tr/>
-      <tr>
-        <th class="nowrap">住所</th>
-        <td><%= @customer.address %></td>
-      <tr/>
-      <tr>
-        <th class="nowrap">電話番号</th>
-        <td><%= @customer.telephone_number %></td>
-      <tr/>
-      <tr>
-        <th class="nowrap">メールアドレス</th>
-        <td><%= @customer.email %></td>
-      </tr>
-    </table>
-  </body>
+    <br>
+    <a>配送先</a><%= link_to "一覧を見る", public_addresses_path(current_customer), class:"btn btn-sm btn-primary" %><br>
+    <br>
+    <a>注文履歴</a><%= link_to "一覧を見る", public_orders_path(current_customer), class:"btn btn-sm btn-primary" %>
 
-<br>
-<a>配送先</a><%= link_to "一覧を見る", public_addresses_path(current_customer), class:"btn btn-sm btn-primary" %><br>
-<br>
-<a>注文履歴</a><%= link_to "一覧を見る", public_orders_path(current_customer), class:"btn btn-sm btn-primary" %>
+    </div>
+  </div>
+</div>
