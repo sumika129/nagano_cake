@@ -32,10 +32,10 @@
       <% @item.each do |item| %>
         <table>
           <tr>
-            <td><%= image_tag item.get_image(50,50) %></td>
+            <td><%= link_to public_item_path(item) do %><%= image_tag item.get_image(70,70) %><% end %></td>
           </tr>
           <tr>
-            <td><%= link_to item.name, admin_item_path(item) %></td>
+            <td><%= item.name %></td>
           </tr>
           <tr>
             <td>¥<%= item.price %></td>
