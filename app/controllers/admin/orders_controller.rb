@@ -7,8 +7,12 @@ class Admin::OrdersController < ApplicationController
   def update
     @order = Order.find(params[:id])
     @oeder_detail = @order.oeder_details
-    if @order.update(order_params)
-      @oeder_detail.update_all(making_status: 1) if @order.status == "confirmation"
+    #params[:order][:status] = params[:order][:status].to_i
+    if @order.update(order_params) && @order.status == "confirmation"
+      #@oeder_detail.each do |oeder_detail|
+        #oeder_detail.update(making_status: "waiting")
+      #end
+      @oeder_detail.update_all(making_status: "waiting")
     end
     redirect_to admin_order_path(@order)
   end
